@@ -105,3 +105,47 @@ function reiniciarLista() {
   document.getElementById("resultado").innerHTML = "";
   document.getElementById("amigo").value = "";
 }
+function mostrarLista() {
+  const lista = document.getElementById("listaAmigos");
+  lista.innerHTML = "";
+
+  amigos.forEach((nombre, index) => {
+    const item = document.createElement("li");
+    item.classList.add("nombre-animado");
+    item.textContent = `${index + 1}. ${nombre}`;
+    lista.appendChild(item);
+  });
+}
+function mostrarLista() {
+  const lista = document.getElementById("listaAmigos");
+  lista.innerHTML = "";
+
+  amigos.forEach((nombre, index) => {
+    const item = document.createElement("li");
+    item.classList.add("nombre-animado");
+    item.textContent = `${index + 1}. ${nombre}`;
+    lista.appendChild(item);
+  });
+}
+function generarColorDesdeTexto(texto) {
+  let hash = 0;
+  for (let i = 0; i < texto.length; i++) {
+    hash = texto.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const color = "#" + ((hash >> 24) & 0xFF).toString(16).padStart(2, '0') +
+                      ((hash >> 16) & 0xFF).toString(16).padStart(2, '0') +
+                      ((hash >> 8) & 0xFF).toString(16).padStart(2, '0');
+  return color;
+}
+function mostrarLista() {
+  const lista = document.getElementById("listaAmigos");
+  lista.innerHTML = "";
+
+  amigos.forEach((nombre, index) => {
+    const item = document.createElement("li");
+    item.classList.add("nombre-animado");
+    item.textContent = `${index + 1}. ${nombre}`;
+    item.style.color = generarColorDesdeTexto(nombre);
+    lista.appendChild(item);
+  });
+}

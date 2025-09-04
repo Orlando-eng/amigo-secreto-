@@ -178,3 +178,60 @@ ul {
 .button-reset:hover {
   background-color: #a1a1a1;
 }
+/* Animación de entrada personalizada */
+.nombre-animado {
+  opacity: 0;
+  animation: fadeInEscribir 1.2s ease forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--color-primary);
+}
+
+/* Máquina de escribir + fade-in */
+@keyframes fadeInEscribir {
+  0% {
+    opacity: 0;
+    width: 0;
+  }
+  50% {
+    opacity: 1;
+    width: 100%;
+  }
+  100% {
+    border-right: 0;
+  }
+}
+/* Animación de entrada tipo fade-in + máquina de escribir */
+.nombre-animado {
+  opacity: 0;
+  animation: aparecerTexto 1s ease forwards;
+  position: relative;
+}
+
+/* Efecto de aparición suave */
+@keyframes aparecerTexto {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.nombre-animado {
+  opacity: 0;
+  animation: aparecerTexto 1s ease forwards;
+  position: relative;
+  font-weight: bold;
+}
+@keyframes aparecerTexto {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
