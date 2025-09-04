@@ -235,34 +235,36 @@ ul {
     transform: translateY(0);
   }
 }
-/* 📱 Optimización para celulares */
+/* 📱 Mobile-first optimización */
 @media (max-width: 768px) {
   body {
     flex-direction: column;
     align-items: stretch;
     padding: 0;
+    background-color: var(--color-primary);
   }
 
   .main-content {
     width: 100%;
-    height: auto;
-    padding: 0 10px;
+    padding: 0 15px;
   }
 
   .header-banner {
     flex-direction: column;
-    padding: 20px 10px;
+    padding: 20px 0;
+    text-align: center;
   }
 
   .main-title {
     font-size: 2rem;
-    text-align: center;
+    line-height: 1.2;
+    margin-bottom: 10px;
   }
 
   .header-banner img {
     width: 80%;
-    max-width: 300px;
-    margin-top: 10px;
+    max-width: 250px;
+    margin: 0 auto;
   }
 
   .input-section {
@@ -277,8 +279,8 @@ ul {
 
   .input-wrapper {
     flex-direction: column;
-    align-items: stretch;
     gap: 10px;
+    width: 100%;
   }
 
   .input-name {
@@ -295,10 +297,19 @@ ul {
     border-radius: 25px;
   }
 
+  .name-list,
+  .result-list {
+    font-size: 1.125rem;
+    text-align: center;
+    word-break: break-word;
+    padding: 0 10px;
+  }
+
   .button-container {
     flex-direction: column;
     gap: 10px;
     margin-top: 20px;
+    width: 100%;
   }
 
   .button-draw,
@@ -314,15 +325,9 @@ ul {
     display: none;
   }
 
-  .name-list li,
-  .result-list {
-    font-size: 1.125rem;
-    text-align: center;
-    word-wrap: break-word;
-  }
-
   .footer {
     padding: 15px 10px;
     font-size: 0.9rem;
+    text-align: center;
   }
 }
