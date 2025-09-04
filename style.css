@@ -235,3 +235,94 @@ ul {
     transform: translateY(0);
   }
 }
+/* 📱 Optimización para celulares */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+  }
+
+  .main-content {
+    width: 100%;
+    height: auto;
+    padding: 0 10px;
+  }
+
+  .header-banner {
+    flex-direction: column;
+    padding: 20px 10px;
+  }
+
+  .main-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .header-banner img {
+    width: 80%;
+    max-width: 300px;
+    margin-top: 10px;
+  }
+
+  .input-section {
+    padding: 20px 10px;
+    border-radius: 32px 32px 0 0;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .input-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .input-name {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: 25px;
+  }
+
+  .button-add {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: 25px;
+  }
+
+  .button-container {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .button-draw,
+  .button-reset,
+  .button-darkmode {
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px;
+    border-radius: 25px;
+  }
+
+  .button-draw img {
+    display: none;
+  }
+
+  .name-list li,
+  .result-list {
+    font-size: 1.125rem;
+    text-align: center;
+    word-wrap: break-word;
+  }
+
+  .footer {
+    padding: 15px 10px;
+    font-size: 0.9rem;
+  }
+}
