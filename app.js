@@ -1,47 +1,107 @@
-const listaAmigos = [];
+// El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
+// Lista global de amigos
+let amigos = [];
 
+// Función para agregar nombres
 function agregarAmigo() {
   const input = document.getElementById("amigo");
-  const nombre = input.value.trim();
-  if (nombre) {
-    listaAmigos.push(nombre);
-    mostrarLista();
-    input.value = "";
-  }
+  const nombresIngresados = input.value.trim();
+
+  if (nombresIngresados === "") return;
+
+  // Separar por comas y limpiar espacios
+  const nuevosNombres = nombresIngresados
+    .split(",")
+    .map(nombre => nombre.trim())
+    .filter(nombre => nombre !== "");
+
+  // Agregar nombres únicos
+  nuevosNombres.forEach(nombre => {
+    if (!amigos.includes(nombre)) {
+      amigos.push(nombre);
+    }
+  });
+
+  mostrarLista();
+  input.value = "";
 }
 
+// Mostrar la lista de nombres
 function mostrarLista() {
-  const ul = document.getElementById("listaAmigos");
-  ul.innerHTML = "";
-  listaAmigos.forEach((nombre) => {
-    const li = document.createElement("li");
-    li.textContent = nombre;
-    ul.appendChild(li);
+  const lista = document.getElementById("listaAmigos");
+  lista.innerHTML = "";
+
+  amigos.forEach((nombre, index) => {
+    const item = document.createElement("li");
+    item.textContent = `${index + 1}. ${nombre}`;
+    lista.appendChild(item);
   });
 }
 
+// Función para sortear un amigo secreto
 function sortearAmigo() {
-  if (listaAmigos.length < 2) {
-    alert("Agrega al menos dos amigos para sortear.");
+  const resultado = document.getElementById("resultado");
+  resultado.innerHTML = "";
+
+  if (amigos.length === 0) {
+    resultado.textContent = "Por favor, añade al menos un nombre.";
     return;
   }
 
-  const asignaciones = {};
-  const disponibles = [...listaAmigos];
+  const indiceGanador = Math.floor(Math.random() * amigos.length);
+  const nombreGanador = amigos[indiceGanador];
 
-  listaAmigos.forEach((nombre) => {
-    const posibles = disponibles.filter((n) => n !== nombre);
-    const elegido = posibles[Math.floor(Math.random() * posibles.length)];
-    asignaciones[nombre] = elegido;
-    disponibles.splice(disponibles.indexOf(elegido), 1);
-  });
+  // Mostrar resultado con animación
+  resultado.textContent = `🎉 El Amigo Secreto es: ${nombreGanador}`;
+  resultado.classList.add("resultado-animado");
 
-  const resultado = document.getElementById("resultado");
-  resultado.innerHTML = "";
-  for (const [amigo, asignado] of Object.entries(asignaciones)) {
-    const li = document.createElement("li");
-    li.textContent = `${amigo} regalará a ${asignado}`;
-    resultado.appendChild(li);
-  }
+  // Mostrar confeti
+  mostrarConfeti();
+
+  // Mostrar botón de WhatsApp
+  mostrarBotonWhatsApp(nombreGanador);
 }
-// El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
+
+// Animación de confeti
+function mostrarConfeti() {
+  const confeti = document.createElement("div");
+  confeti.className = "confeti";
+  document.body.appendChild(confeti);
+
+  setTimeout(() => {
+    confeti.remove();
+  }, 3000);
+}
+
+// Botón para compartir por WhatsApp
+function mostrarBotonWhatsApp(nombre) {
+  const resultado = document.getElementById("resultado");
+  const mensaje = encodeURIComponent(`🎁 El Amigo Secreto es: ${nombre}`);
+  const enlace = `https://wa.me/?text=${mensaje}`;
+
+  const boton = document.createElement("a");
+  boton.href = enlace;
+  boton.target = "_blank";
+  boton.textContent = "Compartir por WhatsApp";
+  boton.className = "whatsapp-button";
+
+  resultado.appendChild(boton);
+}
+
+// Reiniciar lista
+function reiniciarLista() {
+  amigos = [];
+  document.getElementById("listaAmigos").innerHTML = "";
+  document.getElementById("resultado").innerHTML = "";
+}
+
+// Modo oscuro
+function toggleModoOscuro() {
+  document.body.classList.toggle("modo-oscuro");
+}
+function reiniciarLista() {
+  amigos = [];
+  document.getElementById("listaAmigos").innerHTML = "";
+  document.getElementById("resultado").innerHTML = "";
+  document.getElementById("amigo").value = "";
+}
