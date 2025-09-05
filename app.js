@@ -149,3 +149,38 @@ function mostrarLista() {
     lista.appendChild(item);
   });
 }
+function agregarAmigo() {
+  const input = document.getElementById("amigo");
+  const alerta = document.getElementById("alertaDuplicado");
+  const nombresIngresados = input.value.trim();
+
+  if (nombresIngresados === "") return;
+
+  const nuevosNombres = nombresIngresados
+    .split(",")
+    .map(nombre => nombre.trim())
+    .filter(nombre => nombre !== "");
+
+  let duplicados = [];
+
+  nuevosNombres.forEach(nombre => {
+    if (amigos.includes(nombre)) {
+      duplicados.push(nombre);
+    } else {
+      amigos.push(nombre);
+    }
+  });
+
+  if (duplicados.length > 0) {
+    alerta.textContent = `⚠️ El nombre "${duplicados.join(', ')}" ya está en la lista.`;
+    alerta.style.display = "block";
+    setTimeout(() => {
+      alerta.style.display = "none";
+    }, 3000);
+  } else {
+    alerta.style.display = "none";
+  }
+
+  mostrarLista();
+  input.value = "";
+}

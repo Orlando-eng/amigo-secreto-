@@ -331,3 +331,21 @@ ul {
     text-align: center;
   }
 }
+.alerta-duplicado {
+  display: none;
+  background-color: #ffdddd;
+  color: #a80000;
+  border: 2px solid #a80000;
+  border-radius: 12px;
+  padding: 10px 15px;
+  margin-top: 10px;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  animation: aparecerAlerta 0.5s ease-in-out;
+}
+
+@keyframes aparecerAlerta {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
